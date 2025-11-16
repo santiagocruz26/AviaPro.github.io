@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AviaPro — Venta y Renta de Aviones</title>
+
+  <!-- favicon / icono del sitio (coloca logo.png junto al HTML) -->
+  <link rel="icon" href="logo.png" type="image/png">
+  <style>
+    /* CSS simplificado: mantiene apariencia actual */
+    body { margin:0; font-family:"Segoe UI", Roboto, Arial, sans-serif; background: linear-gradient(180deg,#f3f6fb,#e9eef6); color:#0b1221; }
+    .container { max-width:1100px; margin:28px auto; padding:20px; }
+    header{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .logo{ width:64px; height:64px; border-radius:12px; overflow:hidden; display:grid; place-items:center; border:1px solid rgba(10,20,30,0.04); background:rgba(255,255,255,0.4); }
+    .logo img{ width:92%; height:92%; object-fit:contain; display:block; }
+    nav a{ margin-left:14px; color:#6b7280; text-decoration:none; font-weight:600; }
+    nav a:hover{ color:#0a84ff; }
+
+    .hero{ margin-top:18px; padding:20px; border-radius:12px; background:rgba(255,255,255,0.95); display:flex; gap:18px; align-items:center; flex-wrap:wrap; box-shadow:0 8px 30px rgba(11,18,33,0.06); }
+    .hero .intro{ flex:1; min-width:240px; }
+    .hero h1{ margin:0 0 8px 0; font-size:1.6rem; }
+    .muted{ color:#6b7280; }
+    .cta{ margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; }
+    .btn{ background:#0a84ff; color:#fff; border:0; padding:10px 14px; border-radius:8px; cursor:pointer; font-weight:700; }
+    .btn.ghost{ background:transparent; border:1px solid rgba(11,18,33,0.06); color:#6b7280; }
+
+    .listings{ display:grid; grid-template-columns: 1fr 320px; gap:18px; margin-top:18px; }
+    .catalog, .sidebar{ background:#fff; padding:14px; border-radius:10px; box-shadow:0 8px 30px rgba(11,18,33,0.06); }
+    .section-title{ display:flex; justify-content:space-between; align-items:center; }
+    .grid-cards{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:12px; }
+    .card{ background:#fff; border-radius:10px; overflow:hidden; border:1px solid #edf2f7; display:flex; flex-direction:column; box-shadow:0 6px 18px rgba(2,6,23,0.04); }
+    .card img{ width:100%; height:140px; object-fit:cover; display:block; }
+    .card .body{ padding:10px; flex:1; display:flex; flex-direction:column; gap:8px; }
+    .model{ font-weight:700; font-size:0.95rem; }
+    .detail{ color:#6b7280; font-size:0.9rem; }
+    .price{ margin-left:auto; font-weight:800; color:#0a84ff; }
+    .price-list{ display:flex; flex-direction:column; gap:10px; margin-top:8px; }
+    .price-item{ display:flex; justify-content:space-between; align-items:center; padding:8px; border-radius:8px; background:#fbfdff; border:1px solid #eef4f4; }
+
+    form{ display:grid; gap:8px; margin-top:12px; }
+    input, select, textarea{ width:100%; padding:8px; border-radius:8px; border:1px solid #dce9f5; font-size:0.95rem; }
+    .row{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+
+    footer{ margin-top:18px; text-align:center; color:#6b7280; font-size:0.9rem; }
+
+    /* Subtítulos visibles que explican cada bloque (estilo) */
+    .subtitle { margin-top:8px; font-size:0.92rem; color:#94a3b8; font-style:italic; }
+
+    @media (max-width:980px) {
+      .listings{ grid-template-columns:1fr; }
+      .grid-cards{ grid-template-columns:1fr; }
+      header{ flex-direction:column; align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- HEADER: logo + nombre + navegación -->
+    <header>
+      <div class="brand">
+        <div class="logo" aria-label="Logo de AviaPro">
+          <!-- Imagen del logo: guarda logo.png junto al HTML o deja la URL actual -->
+          <img src="c:\Users\c5535\Pictures\Captura de pantalla 2025-11-16 164304.png" alt="Logo AviaPro">
+        </div>
+        <div>
+          <div style="font-weight:800">AviaPro</div>
+          <div style="color:var(--muted);font-size:0.9rem">Venta y renta de aviones • Mantenimiento</div>
+        </div>
+      </div>
+
+      <nav aria-label="Navegación">
+        <a href="#venta">Aviones en venta</a>
+        <a href="#renta">Aviones para renta</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <!-- SUBTÍTULO HEADER: explica su propósito -->
+    <p class="subtitle">Cabecera: contiene el logo, el nombre de la empresa y enlaces para moverte por la página.</p>
+
+    <!-- HERO: presentación breve con llamadas a la acción -->
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="intro">
+          <h1 id="hero-title">Compra y renta de aviones — AviaPro</h1>
+          <p class="muted">Modelos verificados, opciones de financiamiento, contratos de renta por hora o por día y soporte técnico certificado.</p>
+
+          <div class="cta">
+            <!-- Botones que desplazan la vista a secciones relevantes -->
+            <button class="btn" onclick="document.getElementById('venta').scrollIntoView({behavior:'smooth'})">Ver inventario</button>
+            <button class="btn ghost" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Solicitar cotización</button>
+          </div>
+        </div>
+
+        <!-- Imagen decorativa a la derecha -->
+        <div style="min-width:220px;text-align:center">
+          <img src="c:\Users\c5535\Pictures\360_F_621869239_50GOILIELCzONLdCrceR3zXDjPn1akrG.webp" alt="Avión privado" style="width:220px;border-radius:10px;box-shadow:0 8px 30px rgba(2,6,23,0.06)">
+        </div>
+      </section>
+
+      <!-- SUBTÍTULO HERO -->
+      <p class="subtitle">Sección principal: presenta qué ofrece la empresa y permite acciones rápidas.</p>
+
+      <!-- LISTINGS: inventario (venta) + sidebar (renta) -->
+      <section id="venta" style="margin-top:18px">
+        <div class="listings">
+          <div class="catalog">
+            <div class="section-title">
+              <h2>Aviones en venta</h2>
+              <div class="muted">Modelos disponibles</div>
+            </div>
+
+            <!-- SUBTÍTULO VENTA -->
+            <p class="subtitle">Listado de aviones en venta: cada tarjeta muestra imagen, modelo, precio y acciones.</p>
+
+            <div class="grid-cards" id="ventas-grid">
+              <!-- Tarjeta de ejemplo: imagen + datos + botones -->
+              <article class="card">
+                <img src="c:\Users\c5535\Pictures\aircraft-private-jets-embraer-legacy-650-371892_09f21d45a5f491db_600X370.webp" alt="Cessna 172">
+                <div class="body">
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div class="model">Embraer Legacy 650E</div>
+                    <div class="price">$195,000</div>
+                  </div>
+                  <div class="detail">Horas: 1,250 • Inspección reciente • Ubicación: Hangar A</div>
+                  <div style="display:flex;gap:8px;margin-top:auto">
+                    <!-- verDetalle muestra una alerta con info (función JS abajo) -->
+                    <button class="btn" onclick="verDetalle('Cessna 172 Skyhawk', 195000)">Ver detalles</button>
+                    <!-- contactar completa el formulario con el modelo (función JS abajo) -->
+                    <button class="btn ghost" onclick="contactar('Cessna 172 Skyhawk')">Contactar</button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Más tarjetas similares -->
+              <article class="card">
+                <img src="c:\Users\c5535\Pictures\httpswww.flyingmag.comsitesflyingmag.comfilesimport2012sitesallfiles_images201201fly0112_pilatus11.webp" alt="Pilatus PC-12">
+                <div class="body">
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div class="model">Pilatus PC-12 (2014)</div>
+                    <div class="price">$2,100,000</div>
+                  </div>
+                  <div class="detail">Motor PT6 • Configuración ejecutivo • Mantenimiento completo</div>
+                  <div style="display:flex;gap:8px;margin-top:auto">
+                    <button class="btn" onclick="verDetalle('Pilatus PC-12', 2100000)">Ver detalles</button>
+                    <button class="btn ghost" onclick="contactar('Pilatus PC-12')">Contactar</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card">
+                <img src="c:\Users\c5535\Pictures\eyJidWNrZXQiOiJ0YXAtYXNzZXRzMSIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NjgwLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJhbHBoYSI6MSwiciI6MjU1LCJiIjoyNTUsImciOjI1NX19LCJzbWFydE92ZXJsYXkiOnsiYnVja2V0IjoidGFwLWFzc2V0czEiLC.webp" alt="Beechcraft Baron">
+                <div class="body">
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div class="model">Beechcraft Baron G58 (2013)</div>
+                    <div class="price">$775,000</div>
+                  </div>
+                  <div class="detail">Bimotores • Ideal para entrenamiento y transporte ejecutivo</div>
+                  <div style="display:flex;gap:8px;margin-top:auto">
+                    <button class="btn" onclick="verDetalle('Beechcraft Baron G58', 775000)">Ver detalles</button>
+                    <button class="btn ghost" onclick="contactar('Beechcraft Baron G58')">Contactar</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card">
+                <img src="c:\Users\c5535\Pictures\gulfstream-200-3.webp" alt="Jet ejecutivo">
+                <div class="body">
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div class="model">Gulfstream G200 (2008)</div>
+                    <div class="price">$4,500,000</div>
+                  </div>
+                  <div class="detail">Cabina ejecutiva, alcance intercontinental • Revisiones completas</div>
+                  <div style="display:flex;gap:8px;margin-top:auto">
+                    <button class="btn" onclick="verDetalle('Gulfstream G200', 4500000)">Ver detalles</button>
+                    <button class="btn ghost" onclick="contactar('Gulfstream G200')">Contactar</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- SIDEBAR: información de renta / tarifas -->
+          <aside class="sidebar" id="renta">
+            <div class="section-title">
+              <h3>Renta / Charter</h3>
+              <div class="muted">Tarifas estimadas</div>
+            </div>
+
+            <!-- SUBTÍTULO RENTA -->
+            <p class="subtitle">Tarifas: precios por hora y condiciones mínimas; sirven como referencia antes de solicitar cotización.</p>
+
+            <div class="price-list">
+              <div class="price-item">
+                <div>
+                  <div style="font-weight:700">Cessna 172</div>
+                  <div class="muted" style="font-size:0.9rem">Piloto incluido opcional</div>
+                </div>
+                <div style="text-align:right">
+                  <div style="font-weight:800">$250/h</div>
+                  <div class="muted" style="font-size:0.85rem">Alquiler por hora</div>
+                </div>
+              </div>
+
+              <div class="price-item">
+                <div>
+                  <div style="font-weight:700">Pilatus PC-12</div>
+                  <div class="muted" style="font-size:0.9rem">Capacidad 8 pax</div>
+                </div>
+                <div style="text-align:right">
+                  <div style="font-weight:800">$1,600/h</div>
+                  <div class="muted" style="font-size:0.85rem">Mínimo 2 h</div>
+                </div>
+              </div>
+
+              <div class="price-item">
+                <div>
+                  <div style="font-weight:700">Jet ejecutivo (Gulfstream)</div>
+                  <div class="muted" style="font-size:0.9rem">Vuelo privado y corporativo</div>
+                </div>
+                <div style="text-align:right">
+                  <div style="font-weight:800">$6,500/h</div>
+                  <div class="muted" style="font-size:0.85rem">Mínimo 3 h + handling</div>
+                </div>
+              </div>
+
+              <div style="margin-top:12px" class="muted" style="font-size:0.9rem">
+                Precios estimados. Cotizaciones finales incluyen impuestos, aterrizaje y handling. Contacta para disponibilidad.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- FORMULARIO: recopila datos para cotización -->
+      <section id="contacto" style="margin-top:18px">
+        <div class="catalog">
+          <div class="section-title">
+            <h2>Contacto / Solicitar cotización</h2>
+            <div class="muted">Rellena los datos y te contactamos</div>
+          </div>
+
+          <!-- SUBTÍTULO CONTACTO -->
+          <p class="subtitle">Formulario: recoge nombre, teléfono, correo, interés y modelo; validación básica y envío simulado por JavaScript.</p>
+
+          <form id="contactForm" novalidate style="margin-top:10px">
+            <div class="row">
+              <div>
+                <label for="nombre">Nombre *</label>
+                <input id="nombre" name="nombre" type="text" required minlength="3" placeholder="Tu nombre">
+              </div>
+              <div>
+                <label for="telefono">Teléfono *</label>
+                <input id="telefono" name="telefono" type="tel" required placeholder="+52 55 1234 5678">
+              </div>
+            </div>
+
+            <label for="email">Correo *</label>
+            <input id="email" name="email" type="email" required placeholder="tunombre@ejemplo.com">
+
+            <label for="interes">Interés *</label>
+            <select id="interes" name="interes" required>
+              <option value="">-- Elige --</option>
+              <option value="venta">Compra de avión</option>
+              <option value="renta">Renta / Charter</option>
+              <option value="ambos">Ambos</option>
+            </select>
+
+            <label for="modelo">Modelo de interés (opcional)</label>
+            <input id="modelo" name="modelo" type="text" placeholder="Ej. Cessna 172">
+
+            <label for="mensaje">Mensaje / requisitos</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tus requerimientos"></textarea>
+
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button type="submit" class="btn">Enviar solicitud</button>
+              <button type="reset" class="btn ghost">Limpiar</button>
+            </div>
+
+            <p id="status" class="muted" style="margin-top:8px"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- SUBTÍTULO FOOTER -->
+    <p class="subtitle">Pie de página: muestra contacto rápido y derechos de autor.</p>
+
+    <!-- NUEVA SECCIÓN: VIDEO TUTORIAL -->
+    <section id="tutorial" style="margin-top:18px">
+      <div class="catalog">
+        <div class="section-title">
+          <h2>Tutorial — Conoce AviaPro</h2>
+          <div class="muted">Video explicativo</div>
+        </div>
+
+        <p class="subtitle">Video: guía visual sobre cómo usar la plataforma, explorar aviones y solicitar cotizaciones.</p>
+
+        <div style="margin-top:12px; border-radius:10px; overflow:hidden; background:#000; display:flex; justify-content:center; align-items:center; min-height:400px; box-shadow:0 8px 30px rgba(11,18,33,0.06)">
+          <iframe 
+            width="100%" 
+            height="400" 
+            src="c:\Users\c5535\Downloads\video de la pagina.mp4" 
+            title="Tutorial AviaPro" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <p class="muted" style="margin-top:12px; font-size:0.95rem">
+          📌 <strong>Contenido del video:</strong> Explicación de cada sección (Header, Catálogo, Tarifas, Formulario), cómo navegar, ver detalles de aviones y enviar una solicitud de cotización.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      © AviaPro — Venta y renta de aviones • Contacto: ventas@aviapro.example • +52 55 1234 5678
+    </footer>
+  </div>
+
+  <script>
+    // JavaScript breve y comentado:
+    // verDetalle(modelo, precio): muestra una alerta con modelo y precio (simulación)
+    function verDetalle(modelo, precio){
+      const texto = modelo + ' — Precio: $' + precio.toLocaleString() + '\nContacta para más información y fotos técnicas.';
+      alert(texto);
+    }
+
+    // contactar(modelo): rellena el campo "modelo" del formulario y desplaza la vista
+    function contactar(modelo){
+      const interes = document.getElementById('interes');
+      const modeloInput = document.getElementById('modelo');
+      const status = document.getElementById('status');
+      if(interes) interes.value = 'venta';
+      if(modeloInput) modeloInput.value = modelo;
+      document.getElementById('contacto').scrollIntoView({behavior:'smooth'});
+      if(status) status.textContent = 'Modelo seleccionado: ' + modelo + ' — completa tus datos y envía (simulación).';
+    }
+
+    // Manejo del envío del formulario: evita envío real y muestra mensaje de confirmación
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const status = document.getElementById('status');
+      if (!this.checkValidity()){
+        status.textContent = 'Por favor completa los campos obligatorios.';
+        return;
+      }
+      status.textContent = 'Solicitud enviada (simulación). Te contactaremos en 24-48h.';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
